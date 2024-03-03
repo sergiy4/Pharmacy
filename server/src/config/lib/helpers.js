@@ -1,1 +1,1 @@
-export { ENV } from './get-env.helper.js';
+export { getENV } from './get-env.helper.js';
