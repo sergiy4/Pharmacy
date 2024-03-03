@@ -4,6 +4,8 @@ import { errorHandler } from './src/middleware/error-handler/error-handler.middl
 
 const app = express();
 
+app.use(express.json());
+
 app.use(initApi(express.Router));
 app.use(errorHandler);
 
