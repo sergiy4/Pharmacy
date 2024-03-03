@@ -5,3 +5,4 @@ export {
   type Medicine,
   type PatchMedicineDtoResponse,
 } from './medicine/types';
+export { type GetShopsDtoResponse, type Shop } from './shop/types';
