@@ -13,6 +13,4 @@ function getENV() {
   };
 }
 
-console.log(getENV());
-
 export { getENV };
