@@ -1,6 +1,6 @@
 import knex from 'knex';
-import { knexfile } from './knexfile.js';
+import knexfile from '../../knexfile.js';
 
-const database = knex(knexfile.development);
+const database = knex(knexfile()['development']);
 
 export { database };
