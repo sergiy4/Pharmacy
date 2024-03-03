@@ -37,13 +37,13 @@ class Abstract {
   async updateById(id, data) {
     const dataForUpdate = {
       ...data,
-      updated_at: new Date(),
     };
 
     const [result] = await this.table
       .where('id', id)
       .update(dataForUpdate)
       .returning('*');
+
     return result;
   }
 
