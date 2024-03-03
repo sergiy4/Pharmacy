@@ -1,7 +1,7 @@
 import { config } from 'dotenv';
 
 function getENV() {
-  config({ path: '../../.env' });
+  config({ path: './.env' });
   return {
     DB: {
       PORT: process.env.DATABASE_PORT,
