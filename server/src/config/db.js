@@ -9,7 +9,6 @@ function initialConfig() {
     USER: user,
   } = getENV().DB;
 
-  console.log(database, host);
   return {
     development: {
       client: 'postgresql',
