@@ -1,0 +1,12 @@
+.shop-card {
+  background-color: rgb(156, 156, 255);
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.shop-card:hover {
+  background-color: rgb(115, 115, 201);
+}
