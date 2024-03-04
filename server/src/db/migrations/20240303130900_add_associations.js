@@ -5,7 +5,7 @@ const TableName = {
 
 const ColumnName = {
   ID: 'id',
-  SHOP_ID: 'SHOP_id',
+  SHOP_ID: 'shop_id',
 };
 
 const RelationRule = {
