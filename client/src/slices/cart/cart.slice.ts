@@ -1,21 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { type CardItem } from '../../libs/types/types';
-import { getCardItems } from './actions';
+import { type CartItem } from '../../libs/types/types';
+import { getCartItems } from './actions';
 
 type State = {
-  card: CardItem[];
+  cart: CartItem[];
 };
 
 const initialState: State = {
-  card: [],
+  cart: [],
 };
 
 const { reducer, actions, name } = createSlice({
   initialState,
-  name: 'card',
+  name: 'cart',
   reducers: {
     changeQuantity: (state, action) => {
-      state.card = state.card.map((item) => {
+      state.cart = state.cart.map((item) => {
         if (item.id === action.payload.id) {
           item.quantity = action.payload.quantity;
           return item;
@@ -25,9 +25,9 @@ const { reducer, actions, name } = createSlice({
     },
   },
   extraReducers(builder) {
-    builder.addCase(getCardItems.fulfilled, (state, action) => {
+    builder.addCase(getCartItems.fulfilled, (state, action) => {
       const { medicines } = action.payload;
-      state.card = medicines;
+      state.cart = medicines;
     });
   },
 });

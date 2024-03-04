@@ -1,7 +1,7 @@
 const ApiPath = {
   MEDICINES: '/medicines',
   SHOPS: '/shops',
-  CARD: '/card',
+  CART: '/cart',
   ORDERS: '/orders',
 } as const;
 

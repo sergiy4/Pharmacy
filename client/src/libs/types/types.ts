@@ -7,7 +7,7 @@ export {
 } from './medicine/types';
 export { type GetShopsDtoResponse, type Shop } from './shop/types';
 export { type AsyncThunkConfig } from './thunk/types';
-export { type CardItem, type GetCardItemsRequestDto } from './card/types';
+export { type CartItem, type GetCartItemsRequestDto } from './cart/types';
 export {
   type CreateOrderRequestDto,
   type GetOrdersRequestDto,

@@ -1,17 +1,17 @@
 import { ApiPath, HttpMethod } from '../../libs/enums/enums';
 import {
-  type GetCardItemsRequestDto,
+  type GetCartItemsRequestDto,
   type GetMedicineDtoResponse,
 } from '../../libs/types/types';
 import { type HttpApi } from '../http/http';
-import { type CardApi } from './libs/types/types';
+import { type CartApi } from './libs/types/types';
 
 type Constructor = {
   apiPath: string;
   httpApi: HttpApi;
 };
 
-class Card implements CardApi {
+class Cart implements CartApi {
   #apiPath: string;
 
   #httpApi: HttpApi;
@@ -21,14 +21,14 @@ class Card implements CardApi {
     this.#httpApi = httpApi;
   }
 
-  public getCardItems(
-    payload: GetCardItemsRequestDto
+  public getCartItems(
+    payload: GetCartItemsRequestDto
   ): Promise<GetMedicineDtoResponse> {
-    return this.#httpApi.load(`${this.#apiPath}${ApiPath.CARD}`, {
+    return this.#httpApi.load(`${this.#apiPath}${ApiPath.CART}`, {
       method: HttpMethod.GET,
       payload: JSON.stringify(payload),
     });
   }
 }
 
-export { Card };
+export { Cart };

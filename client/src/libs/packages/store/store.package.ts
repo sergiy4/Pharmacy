@@ -1,6 +1,6 @@
 import { medicineApi } from '../../../packages/medicine/medicine';
 import { shopApi } from '../../../packages/shop/shop';
-import { cardApi } from '../../../packages/card/card';
+import { cartApi } from '../../../packages/cart/cart';
 import {
   type ExtraArguments,
   type StoreInstance,
@@ -9,7 +9,7 @@ import {
 
 import { reducer as medicineReducer } from '../../../slices/medicine/medicine';
 import { reducer as shopReducer } from '../../../slices/shops/shop';
-import { reducer as cardReducer } from '../../../slices/card/card';
+import { reducer as cartReducer } from '../../../slices/cart/cart';
 import { reducer as orderReducer } from '../../../slices/order/order';
 import { configureStore } from '@reduxjs/toolkit';
 import { orderApi } from '../../../packages/order/order';
@@ -27,7 +27,7 @@ class Store implements StorePackage {
       reducer: {
         medicines: medicineReducer,
         shops: shopReducer,
-        card: cardReducer,
+        cart: cartReducer,
         orders: orderReducer,
       },
       middleware: (getDefaultMiddleware) => {
@@ -44,7 +44,7 @@ class Store implements StorePackage {
     return {
       medicineApi,
       shopApi,
-      cardApi,
+      cartApi,
       orderApi,
     };
   }

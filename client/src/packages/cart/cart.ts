@@ -1,21 +1,21 @@
 import {
-  type CardItem,
-  type GetCardItemsRequestDto,
+  type CartItem,
+  type GetCartItemsRequestDto,
   type GetMedicineDtoResponse,
 } from '../../libs/types/types';
 import { ENV } from '../../libs/enums/enums';
 import { httpApi } from '../http/http';
-import { Card as CardApi } from './card-api';
+import { Cart as CartApi } from './cart-api';
 
-const cardApi = new CardApi({
+const cartApi = new CartApi({
   httpApi,
   apiPath: ENV.API_PATH,
 });
 
-export { cardApi };
+export { cartApi };
 export {
-  type GetCardItemsRequestDto,
-  type CardItem,
+  type GetCartItemsRequestDto,
+  type CartItem,
   type GetMedicineDtoResponse,
 };
-export { type CardApi } from './libs/types/types';
+export { type CartApi } from './libs/types/types';

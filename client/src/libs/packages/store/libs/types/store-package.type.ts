@@ -7,25 +7,25 @@ import {
 
 import { type medicineApi } from '../../../../../packages/medicine/medicine';
 import { type shopApi } from '../../../../../packages/shop/shop';
-import { type cardApi } from '../../../../../packages/card/card';
+import { type cartApi } from '../../../../../packages/cart/cart';
 import { type orderApi } from '../../../../../packages/order/order';
 
 import { reducer as medicineReducer } from '../../../../../slices/medicine/medicine';
 import { reducer as shopReducer } from '../../../../../slices/shops/shop';
-import { reducer as cardReducer } from '../../../../../slices/card/card';
+import { reducer as cartReducer } from '../../../../../slices/cart/cart';
 import { reducer as orderReducer } from '../../../../../slices/order/order';
 
 type RootReducer = {
   medicines: ReturnType<typeof medicineReducer>;
   shops: ReturnType<typeof shopReducer>;
-  card: ReturnType<typeof cardReducer>;
+  cart: ReturnType<typeof cartReducer>;
   orders: ReturnType<typeof orderReducer>;
 };
 
 type ExtraArguments = {
   medicineApi: typeof medicineApi;
   shopApi: typeof shopApi;
-  cardApi: typeof cardApi;
+  cartApi: typeof cartApi;
   orderApi: typeof orderApi;
 };
 

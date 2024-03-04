@@ -1,17 +1,17 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import {
-  type CardItem,
+  type CartItem,
   type AsyncThunkConfig,
-  type GetCardItemsRequestDto,
+  type GetCartItemsRequestDto,
 } from '../../libs/types/types';
 import { ActionType } from './common';
 
-const getCardItems = createAsyncThunk<
-  Record<'medicines', CardItem[]>,
-  GetCardItemsRequestDto,
+const getCartItems = createAsyncThunk<
+  Record<'medicines', CartItem[]>,
+  GetCartItemsRequestDto,
   AsyncThunkConfig
->(ActionType.GET_CARD_ITEMS, async (payload, { extra: { cardApi } }) => {
-  const loadMedicines = await cardApi.getCardItems(payload);
+>(ActionType.GET_CART_ITEMS, async (payload, { extra: { cartApi } }) => {
+  const loadMedicines = await cartApi.getCartItems(payload);
 
   const updatedMedicine = loadMedicines.medicines.map((item) => ({
     ...item,
@@ -21,4 +21,4 @@ const getCardItems = createAsyncThunk<
   return { medicines: updatedMedicine };
 });
 
-export { getCardItems };
+export { getCartItems };
