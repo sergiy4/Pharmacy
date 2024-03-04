@@ -1,6 +1,6 @@
 const TableName = {
   MEDICINES: 'medicines',
-  SHOPS: 'SHOPS',
+  SHOPS: 'shops',
 };
 
 const ColumnName = {
