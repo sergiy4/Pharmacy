@@ -18,8 +18,8 @@ class Shop implements ShopApi {
     this.#httpApi = httpApi;
   }
 
-  public getStores(): Promise<GetShopsDtoResponse> {
-    return this.#httpApi.load(`${this.#apiPath}${ApiPath.STORE}`, {
+  public getShops(): Promise<GetShopsDtoResponse> {
+    return this.#httpApi.load(`${this.#apiPath}${ApiPath.SHOPS}`, {
       method: HttpMethod.GET,
     });
   }
