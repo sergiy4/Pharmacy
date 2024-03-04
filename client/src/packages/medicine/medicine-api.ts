@@ -1,4 +1,4 @@
-import { ApiPath, ContentType, HttpMethod } from '../../libs/enums/enums';
+import { ApiPath, HttpMethod } from '../../libs/enums/enums';
 import { type HttpApi } from '../http/http';
 import {
   type MedicineApi,
@@ -25,16 +25,15 @@ class Medicine implements MedicineApi {
   public getMedicines(
     payload: GetMedicineDtoRequest
   ): Promise<GetMedicineDtoResponse> {
-    return this.#httpApi.load(`${this.#apiPath}${ApiPath.MEDICINE}`, {
+    return this.#httpApi.load(`${this.#apiPath}${ApiPath.MEDICINES}`, {
       method: HttpMethod.GET,
-      payload: JSON.stringify(payload),
+      query: payload,
     });
   }
 
   public updateFavoriteMedicine(id: number): Promise<PatchMedicineDtoResponse> {
-    return this.#httpApi.load(`${this.#apiPath}${ApiPath.MEDICINE}/${id}`, {
-      method: HttpMethod.DELETE,
-      contentType: ContentType.NULL,
+    return this.#httpApi.load(`${this.#apiPath}${ApiPath.MEDICINES}/${id}`, {
+      method: HttpMethod.PATCH,
     });
   }
 }
