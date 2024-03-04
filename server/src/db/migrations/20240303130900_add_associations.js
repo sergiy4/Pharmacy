@@ -1,11 +1,11 @@
 const TableName = {
   MEDICINES: 'medicines',
-  STORES: 'stores',
+  SHOPS: 'shops',
 };
 
 const ColumnName = {
   ID: 'id',
-  STORE_ID: 'store_id',
+  SHOP_ID: 'SHOP_id',
 };
 
 const RelationRule = {
@@ -16,9 +16,9 @@ const RelationRule = {
 export async function up(knex) {
   await knex.schema.alterTable(TableName.MEDICINES, (table) => {
     table
-      .integer(ColumnName.STORE_ID)
+      .integer(ColumnName.SHOP_ID)
       .references(ColumnName.ID)
-      .inTable(TableName.STORES)
+      .inTable(TableName.SHOPS)
       .onUpdate(RelationRule.CASCADE)
       .onDelete(RelationRule.SET_NULL);
   });
@@ -26,6 +26,6 @@ export async function up(knex) {
 
 export async function down(knex) {
   await knex.schema.alterTable(TableName.MEDICINES, (table) => {
-    table.dropColumn(ColumnName.STORE_ID);
+    table.dropColumn(ColumnName.SHOP_ID);
   });
 }

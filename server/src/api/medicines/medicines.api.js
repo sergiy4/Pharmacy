@@ -7,9 +7,9 @@ const initMedicine = (Router, services) => {
   router
     .get(ApiPath.ROOT, async (req, res, next) => {
       try {
-        const storeId = req.body?.storeId;
-        console.log(storeId);
-        const medicines = await medicineService.getMedicines(storeId);
+        const shopId = req.body?.shopId;
+        console.log(shopId);
+        const medicines = await medicineService.getMedicines(shopId);
 
         return res.send({
           medicines,

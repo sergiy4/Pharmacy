@@ -1,6 +1,6 @@
 const TableName = {
   MEDICINES: 'medicines',
-  STORES: 'stores',
+  SHOPS: 'SHOPS',
 };
 
 const ColumnName = {
@@ -12,7 +12,7 @@ const ColumnName = {
 };
 
 export async function up(knex) {
-  await knex.schema.createTable(TableName.STORES, (table) => {
+  await knex.schema.createTable(TableName.SHOPS, (table) => {
     table.increments(ColumnName.ID).primary();
     table.string(ColumnName.NAME).notNullable().unique();
   });
@@ -27,6 +27,6 @@ export async function up(knex) {
 }
 
 export async function down(knex) {
-  await knex.schema.dropTableIfExists(TableName.USERS);
-  await knex.schema.dropTableIfExists(TableName.POSTS);
+  await knex.schema.dropTableIfExists(TableName.MEDICINES);
+  await knex.schema.dropTableIfExists(TableName.SHOPS);
 }

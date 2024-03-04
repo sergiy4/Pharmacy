@@ -1,11 +1,11 @@
 const TableName = {
   MEDICINES: 'medicines',
-  STORES: 'stores',
+  SHOPS: 'shops',
 };
 
 export async function seed(knex) {
-  await knex(TableName.STORES).del();
-  await knex(TableName.STORES).insert([
+  await knex(TableName.SHOPS).del();
+  await knex(TableName.SHOPS).insert([
     { name: 'MediMart' },
     { name: 'Health Haven' },
     { name: 'Cure Corner' },

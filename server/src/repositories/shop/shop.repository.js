@@ -1,9 +1,9 @@
 import { Abstract } from '../abstract/abstract.repository.js';
 
-class Store extends Abstract {
+class Shop extends Abstract {
   constructor({ tableName }) {
     super(tableName);
   }
 }
 
-export { Store };
+export { Shop };
