@@ -7,4 +7,4 @@ const allActions = {
 };
 
 export { allActions as actions };
-export { reducer } from './shop.slice';
+export { reducer, getShopsState } from './shop.slice';

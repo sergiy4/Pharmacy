@@ -8,4 +8,4 @@ const allActions = {
 };
 
 export { allActions as actions };
-export { reducer } from './medicine.slice';
+export { reducer, getMedicinesState } from './medicine.slice';
