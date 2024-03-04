@@ -29,6 +29,18 @@ class Medicine {
     return medicines;
   }
 
+  async getCardItems(IDs) {
+    try {
+      const cardItems = await this.#medicineRepository.getByIds(IDs);
+      return cardItems.rows;
+    } catch (err) {
+      throw new CustomError({
+        message: err.detail,
+        statusCode: HttpCode.BAD_REQUEST,
+      });
+    }
+  }
+
   async updateFavoriteMedicine(id) {
     try {
       const currentMedicine = await this.#medicineRepository.findOneById(id);
@@ -41,7 +53,6 @@ class Medicine {
         id,
         dataForUpdate
       );
-      console.log(updatedMedicine);
 
       return updatedMedicine;
     } catch (err) {
