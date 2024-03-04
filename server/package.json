@@ -6,6 +6,11 @@
   "type": "module",
   "scripts": {
     "dev": "nodemon index.js",
+    "migrate:dev": "npx knex migrate:latest",
+    "migrate:dev:make": "npx knex migrate:make",
+    "migrate:dev:down": "npx knex migrate:down",
+    "migrate:dev:rollback": "npx knex migrate:rollback",
+    "seed:run": "npx knex seed:run",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
