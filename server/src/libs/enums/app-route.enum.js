@@ -1,6 +1,6 @@
 const AppRoute = {
   MEDICINES: '/medicines',
-  STORES: '/STORES',
+  SHOPS: '/SHOPS',
 };
 
 export { AppRoute };

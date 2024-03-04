@@ -8,11 +8,11 @@ class Medicine {
     this.#medicineRepository = medicineRepository;
   }
 
-  async getMedicines(storeId) {
+  async getMedicines(shopId) {
     let medicines = [];
-    if (storeId) {
+    if (shopId) {
       const searchData = {
-        store_id: storeId,
+        shop_id: shopId,
       };
       medicines = await this.#medicineRepository.findMany(searchData);
     } else {

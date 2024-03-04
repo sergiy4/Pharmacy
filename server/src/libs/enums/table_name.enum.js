@@ -1,6 +1,6 @@
 const TableName = {
   MEDICINES: 'medicines',
-  STORES: 'stores',
+  SHOPS: 'shops',
 };
 
 export { TableName };

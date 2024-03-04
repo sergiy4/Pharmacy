@@ -1,15 +1,15 @@
 import { ApiPath } from '../../libs/enums/enums.js';
 
-const initStore = (Router, services) => {
-  const { storeService } = services;
+const initShop = (Router, services) => {
+  const { shopService } = services;
   const router = Router();
 
   router.get(ApiPath.ROOT, async (req, res, next) => {
     try {
-      const stores = await storeService.getStores();
+      const shops = await shopService.getShops();
 
       return res.send({
-        stores,
+        shops,
       });
     } catch (err) {
       next(err);
@@ -19,4 +19,4 @@ const initStore = (Router, services) => {
   return router;
 };
 
-export { initStore };
+export { initShop };

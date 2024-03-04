@@ -4,7 +4,7 @@ const ColumnName = {
   ID: 'id',
   FAVORITE: 'favorite',
   PRICE: 'price',
-  STORE: 'store',
+  SHOP_ID: 'shop_id',
 };
 
 export { ColumnName };

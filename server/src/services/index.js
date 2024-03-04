@@ -1,2 +1,2 @@
 export { medicineService } from './medicine/medicine.js';
-export { storeService } from './store/store.js';
+export { shopService } from './shop/shop.js';
