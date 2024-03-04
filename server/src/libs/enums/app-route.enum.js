@@ -1,6 +1,7 @@
 const AppRoute = {
   MEDICINES: '/medicines',
-  SHOPS: '/SHOPS',
+  SHOPS: '/shops',
+  ORDERS: '/orders',
 };
 
 export { AppRoute };
