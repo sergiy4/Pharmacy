@@ -13,7 +13,7 @@ class Shop {
 
     if (!shops.length) {
       throw new CustomError({
-        message: ErrorMessage.shop_NOT_FOUND,
+        message: ErrorMessage.SHOPS_NOT_FOUND,
         statusCode: HttpCode.NOT_FOUND,
       });
     }
