@@ -1,12 +1,13 @@
 import { AppRoute } from '../libs/enums/enums.js';
 import { initMedicine } from './medicines/medicines.api.js';
 import { initShop } from './shop/shop.api.js';
+import { initOrder } from './order/order.api.js';
+import { initCard } from './card/card-api.js';
 import {
   medicineService,
   shopService,
   orderService,
 } from '../services/index.js';
-import { initOrder } from './order/order.api.js';
 
 const initApi = (Router) => {
   const apiRouter = Router();
@@ -16,6 +17,8 @@ const initApi = (Router) => {
   apiRouter.use(AppRoute.SHOPS, initShop(Router, { shopService }));
 
   apiRouter.use(AppRoute.ORDERS, initOrder(Router, { orderService }));
+
+  apiRouter.use(AppRoute.CARD, initCard(Router, { medicineService }));
 
   return apiRouter;
 };
