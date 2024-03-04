@@ -23,7 +23,7 @@ const updateFavoriteMedicine = createAsyncThunk<
 >(
   ActionType.GET_MEDICINES,
   async (payload, { getState, extra: { medicineApi } }) => {
-    const updatedMedicine = await medicineApi.updateFavoriteMedicine(
+    const { updatedMedicine } = await medicineApi.updateFavoriteMedicine(
       payload.id
     );
 
