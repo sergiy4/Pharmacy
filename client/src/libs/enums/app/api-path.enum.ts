@@ -1,6 +1,8 @@
 const ApiPath = {
-  MEDICINE: '/medicine',
-  STORE: '/store',
+  MEDICINES: '/medicines',
+  SHOPS: '/shops',
+  CARD: '/card',
+  ORDERS: '/orders',
 } as const;
 
 export { ApiPath };
