@@ -1,7 +1,7 @@
 const TableName = {
   MEDICINES: 'medicines',
   SHOPS: 'shops',
-  ORDER_ITEM: 'orders_item',
+  ORDER_ITEMS: 'order_items',
   ORDERS: 'orders',
 };
 
@@ -17,12 +17,12 @@ const ColumnName = {
 };
 
 export async function up(knex) {
-  await knex.schema.createTable(TableName.ORDER_ITEM, (table) => {
+  await knex.schema.createTable(TableName.ORDER_ITEMS, (table) => {
     table.increments(ColumnName.ID).primary();
-    table.string(ColumnName.EMAIL).notNullable().unique();
-    table.string(ColumnName.USERNAME).notNullable().unique();
-    table.integer(ColumnName.PHONE).notNullable().unique();
-    table.string(ColumnName.ADDRESS).notNullable().unique();
+    table.string(ColumnName.EMAIL).notNullable();
+    table.string(ColumnName.USERNAME).notNullable();
+    table.string(ColumnName.PHONE).notNullable();
+    table.string(ColumnName.ADDRESS).notNullable();
   });
 
   await knex.schema.createTable(TableName.ORDERS, (table) => {
@@ -30,7 +30,7 @@ export async function up(knex) {
     table
       .integer(ColumnName.ORDER_ID)
       .references(ColumnName.ID)
-      .inTable(TableName.ORDER_ITEM);
+      .inTable(TableName.ORDER_ITEMS);
     table
       .integer(ColumnName.MEDICINE_ID)
       .references(ColumnName.ID)
