@@ -1,6 +1,9 @@
 .cart-main {
   display: flex;
-  align-items: center;
   justify-content: center;
   gap: 30px;
+}
+
+.right-section {
+  flex: 2;
 }

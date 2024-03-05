@@ -3,11 +3,6 @@ import { useCallback, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../libs/hooks/hooks';
 import { getAllCartState } from '../../../../slices/cart/cart';
 import { actions as cartActionCreator } from '../../../../slices/cart/cart';
-import { actions as appActionCreator } from '../../../../slices/app/app';
-import {
-  NotificationMessage,
-  NotificationType,
-} from '../../../../libs/packages/notification/libs/enums/enums';
 import { CartItem } from '../cart-item/cart-item';
 
 const CartItems = () => {
@@ -16,16 +11,7 @@ const CartItems = () => {
 
   const handleCartItemsLoad = useCallback(
     (IDs: number[]): void => {
-      void dispatch(cartActionCreator.getCartItems({ IDs }))
-        .unwrap()
-        .catch(() => {
-          void dispatch(
-            appActionCreator.notify({
-              message: NotificationMessage.GET_CART_FAILED,
-              type: NotificationType.ERROR,
-            })
-          );
-        });
+      void dispatch(cartActionCreator.getCartItems({ IDs }));
     },
     [dispatch]
   );
@@ -36,9 +22,13 @@ const CartItems = () => {
   return (
     <>
       <section className={styles['cart-section']}>
-        {cartState.cart.map((item) => (
-          <CartItem orderItem={item} key={item.id} />
-        ))}
+        {cartState.cart.length ? (
+          cartState.cart.map((item) => (
+            <CartItem orderItem={item} key={item.id} />
+          ))
+        ) : (
+          <h2>Cart is empty</h2>
+        )}
       </section>
     </>
   );
