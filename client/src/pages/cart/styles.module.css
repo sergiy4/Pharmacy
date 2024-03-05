@@ -1,5 +1,6 @@
 .cart-main {
   display: flex;
+  align-items: start;
   justify-content: center;
   gap: 30px;
 }
