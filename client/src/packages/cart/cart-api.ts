@@ -26,7 +26,7 @@ class Cart implements CartApi {
   ): Promise<GetMedicineDtoResponse> {
     return this.#httpApi.load(`${this.#apiPath}${ApiPath.CART}`, {
       method: HttpMethod.GET,
-      payload: JSON.stringify(payload),
+      query: payload,
     });
   }
 }
