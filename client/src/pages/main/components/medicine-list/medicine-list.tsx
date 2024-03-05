@@ -29,7 +29,7 @@ const MedicineList = () => {
       .catch(() => {
         void dispatch(
           appActionCreator.notify({
-            message: NotificationMessage.SHOPS_LOAD_FAILED,
+            message: NotificationMessage.MEDICINE_LOAD_FAILED,
             type: NotificationType.ERROR,
           })
         );
