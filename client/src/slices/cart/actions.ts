@@ -13,13 +13,13 @@ const getCartItems = createAsyncThunk<
 >(
   ActionType.GET_CART_ITEMS,
   async (payload, { getState, extra: { cartApi } }) => {
-    const { cardItems } = await cartApi.getCartItems(payload);
+    const { medicines } = await cartApi.getCartItems(payload);
 
     const {
       cart: { cart },
     } = getState();
 
-    const updatedMedicine = cardItems.map((item) => {
+    const updatedMedicine = medicines.map((item) => {
       const existingItemIndex = cart.findIndex(
         (cartItem) => cartItem.id === item.id
       );
