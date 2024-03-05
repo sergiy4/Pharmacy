@@ -1,0 +1,18 @@
+/* select */
+.select {
+  display: flex;
+  flex-direction: column;
+}
+.visually-hidden {
+  overflow: hidden;
+  white-space: nowrap;
+  color: black;
+}
+
+.select select {
+  min-width: 160px;
+  min-height: 45px;
+  padding: 10px 40px 10px 15px;
+  font-size: var(--font-size-300);
+  background-color: rgb(41, 38, 38);
+}
