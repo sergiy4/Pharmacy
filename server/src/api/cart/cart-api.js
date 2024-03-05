@@ -10,10 +10,10 @@ const initCart = (Router, services) => {
         return parseInt(num, 10);
       });
 
-      const cartItems = await medicineService.getCartItems(IDs);
+      const medicines = await medicineService.getCartItems(IDs);
 
       return res.send({
-        cartItems,
+        medicines,
       });
     } catch (err) {
       next(err);
