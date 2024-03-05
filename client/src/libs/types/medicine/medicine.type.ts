@@ -4,6 +4,7 @@ type Medicine = {
   price: number;
   date_create: string;
   storeId: number;
+  favorite: boolean;
 };
 
 export { type Medicine };

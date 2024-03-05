@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { type Shop } from '../../libs/types/types';
 import { getShops } from './actions';
+import { RootState } from '../../libs/packages/store/store';
 
 type State = {
   shops: Shop[];
@@ -23,4 +24,6 @@ const { reducer, actions, name } = createSlice({
   },
 });
 
-export { reducer, actions, name };
+const getShopsState = (state: RootState) => state.shops.shops;
+
+export { reducer, actions, name, getShopsState };

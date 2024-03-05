@@ -1,6 +1,8 @@
 import { medicineApi } from '../../../packages/medicine/medicine';
 import { shopApi } from '../../../packages/shop/shop';
 import { cartApi } from '../../../packages/cart/cart';
+import { orderApi } from '../../../packages/order/order';
+import { notificationApi } from '../notification/notification';
 import {
   type ExtraArguments,
   type StoreInstance,
@@ -12,7 +14,6 @@ import { reducer as shopReducer } from '../../../slices/shops/shop';
 import { reducer as cartReducer } from '../../../slices/cart/cart';
 import { reducer as orderReducer } from '../../../slices/order/order';
 import { configureStore } from '@reduxjs/toolkit';
-import { orderApi } from '../../../packages/order/order';
 
 class Store implements StorePackage {
   #instance: StoreInstance;
@@ -46,6 +47,7 @@ class Store implements StorePackage {
       shopApi,
       cartApi,
       orderApi,
+      notificationApi,
     };
   }
 }

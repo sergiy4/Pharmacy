@@ -9,6 +9,7 @@ import { type medicineApi } from '../../../../../packages/medicine/medicine';
 import { type shopApi } from '../../../../../packages/shop/shop';
 import { type cartApi } from '../../../../../packages/cart/cart';
 import { type orderApi } from '../../../../../packages/order/order';
+import { type notificationApi } from '../../../notification/notification';
 
 import { reducer as medicineReducer } from '../../../../../slices/medicine/medicine';
 import { reducer as shopReducer } from '../../../../../slices/shops/shop';
@@ -27,6 +28,7 @@ type ExtraArguments = {
   shopApi: typeof shopApi;
   cartApi: typeof cartApi;
   orderApi: typeof orderApi;
+  notificationApi: typeof notificationApi;
 };
 
 type StoreInstance = ReturnType<

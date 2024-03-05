@@ -1,6 +1,7 @@
 import { HttpMethod, HttpHeader, HttpCode } from '../../libs/enums/enums.js';
 import { HttpError } from '../../libs/exception/exceptions.js';
 import { type ValueOf } from '../../libs/types/types.js';
+import { getStringifiedQuery } from './libs/helpers/helpers.js';
 import { type HttpApi, type HttpOptions } from './libs/types/types.js';
 
 class Http implements HttpApi {
@@ -8,12 +9,17 @@ class Http implements HttpApi {
     url: string,
     options: Partial<HttpOptions> = {}
   ): Promise<T> | never {
-    const { method = HttpMethod.GET, payload = null, contentType } = options;
+    const {
+      method = HttpMethod.GET,
+      payload = null,
+      contentType,
+      query,
+    } = options;
     const headers = this.#getHeaders({
       contentType,
     });
 
-    return await fetch(url, {
+    return await fetch(this.#getUrl(url, query), {
       method,
       headers,
       body: payload,
@@ -52,6 +58,17 @@ class Http implements HttpApi {
 
   #parseJSON = <T>(response: Response): Promise<T> => {
     return response.json() as Promise<T>;
+  };
+
+  #getUrl = <T extends Record<string, unknown>>(
+    url: string,
+    query: T | undefined
+  ): string => {
+    if (query) {
+      return `${url}?${getStringifiedQuery(query)}`;
+    }
+
+    return url;
   };
 
   #throwError = (error: Error): never => {

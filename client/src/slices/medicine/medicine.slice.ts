@@ -1,6 +1,7 @@
 import { createSlice, isAnyOf } from '@reduxjs/toolkit';
 import { type Medicine } from '../../packages/medicine/medicine';
 import { getMedicines, updateFavoriteMedicine } from './actions';
+import { RootState } from '../../libs/packages/store/store';
 
 type State = {
   medicines: Medicine[];
@@ -21,11 +22,13 @@ const { reducer, actions, name } = createSlice({
         const { medicines } = action.payload;
 
         if (medicines) {
-          state.medicines = [...medicines];
+          state.medicines = medicines;
         }
       }
     );
   },
 });
 
-export { reducer, actions, name };
+const getMedicinesState = (state: RootState) => state.medicines.medicines;
+
+export { reducer, actions, name, getMedicinesState };

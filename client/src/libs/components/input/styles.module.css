@@ -1,0 +1,17 @@
+/* input */
+
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.input input {
+  width: 100%;
+  min-height: 30px;
+  padding: 5px 0px;
+  font-size: 16px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  appearance: none;
+}
