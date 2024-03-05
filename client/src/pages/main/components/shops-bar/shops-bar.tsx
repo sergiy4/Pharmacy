@@ -26,6 +26,7 @@ const ShopBar = ({ shops, handleMedicineLoad }: Properties) => {
   return (
     <>
       <section className={styles['shop-bar']}>
+        <h2>Shops:</h2>
         <div
           onClick={() => handleMedicineLoad({ storeId: null })}
           className={styles['shop-card']}
