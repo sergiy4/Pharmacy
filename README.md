@@ -32,7 +32,7 @@ The main frameworks and libraries used in the project are listed here. A complet
 
 2.  Get the latest stable version [PostgreSQL](https://www.postgresql.org/download/ 'PostgreSQL') for your OS. Check the correctness of the work - try to create a database, a table - for this you can use [pgAdmin](https://www.pgadmin.org/ 'pgAdmin') or any other convenient way you find.
 
-3.  Create in PostgreSQL 2 **empty** databases for the project. For example, _pharmacy_ .
+3.  Create in PostgreSQL **empty** database for the project. For example, _pharmacy_ .
 
 4.  Clone project`s [repo](https://github.com/sergiy4/Pharmacy.git):
 
@@ -62,7 +62,7 @@ The main frameworks and libraries used in the project are listed here. A complet
 5.  To start the server in the command line (terminal) in the server folder, run:
 
     ```
-    npm run start:dev
+    npm run dev
     ```
 
 ### Frontend
@@ -86,5 +86,5 @@ The main frameworks and libraries used in the project are listed here. A complet
 4.  To run the client from the command line (terminal) in the client folder, run:
 
     ```
-    npm run start:dev
+    npm run start
     ```
