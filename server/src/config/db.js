@@ -7,18 +7,25 @@ function initialConfig() {
     PASSWORD: password,
     PORT: port,
     USER: user,
+    NODE_ENV: env,
+    CONNECTION_STRING: connection_string,
   } = getENV().DB;
+
+  const connection =
+    env === 'production'
+      ? connection_string
+      : {
+          port,
+          host,
+          database,
+          user,
+          password,
+        };
 
   return {
     development: {
       client: 'postgresql',
-      connection: {
-        port,
-        host,
-        database,
-        user,
-        password,
-      },
+      connection,
       pool: {
         min: 2,
         max: 10,
