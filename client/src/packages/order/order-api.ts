@@ -1,4 +1,4 @@
-import { ApiPath, HttpMethod } from '../../libs/enums/enums';
+import { ApiPath, ContentType, HttpMethod } from '../../libs/enums/enums';
 import {
   CreateOrderRequestDto,
   GetOrdersRequestDto,
@@ -26,6 +26,7 @@ class Order implements OrderApi {
     return this.#httpApi.load(`${this.#apiPath}${ApiPath.ORDERS}`, {
       method: HttpMethod.POST,
       payload: JSON.stringify(payload),
+      contentType: ContentType.JSON,
     });
   }
 
