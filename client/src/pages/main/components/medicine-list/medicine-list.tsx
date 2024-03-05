@@ -1,5 +1,5 @@
 import styles from './styles.module.css';
-import { useCallback, useEffect } from 'react';
+import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../libs/hooks/hooks';
 import { getMedicinesState } from '../../../../slices/medicine/medicine';
 import { actions as medicineActionCreator } from '../../../../slices/medicine/medicine';
@@ -9,12 +9,21 @@ import {
   NotificationType,
 } from '../../../../libs/packages/notification/libs/enums/enums';
 import { MedicineCard } from '../medicine-card/medicine-card';
+import { sortMedicinesByPriceAndFavorite } from './libs/helpers/helpers';
+import { FilterBar } from '../filterbar/filter-bar';
 
 const MedicineList = () => {
   const dispatch = useAppDispatch();
   const medicines = useAppSelector((state) => getMedicinesState(state));
+  const [ascending, setAscending] = useState(true);
+  const sortedMedicines = sortMedicinesByPriceAndFavorite(medicines, ascending);
 
-  const handleShopsLoad = useCallback((): void => {
+  const handleDuration = (event: ChangeEvent<HTMLSelectElement>) => {
+    console.log(JSON.parse(event.target.value));
+    setAscending(JSON.parse(event.target.value) as boolean);
+  };
+
+  const handleMedicineLoad = useCallback((): void => {
     void dispatch(medicineActionCreator.getMedicines({ storeId: null }))
       .unwrap()
       .catch(() => {
@@ -28,8 +37,8 @@ const MedicineList = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    handleShopsLoad();
-  }, [handleShopsLoad]);
+    handleMedicineLoad();
+  }, [handleMedicineLoad]);
 
   const handleUpdateFavoriteMedicine = useCallback(
     (payload: { id: number }) =>
@@ -40,7 +49,8 @@ const MedicineList = () => {
   return (
     <>
       <section className={styles['medicines-list']}>
-        {medicines.map((medicine) => (
+        <FilterBar handlePrice={handleDuration} />
+        {sortedMedicines.map((medicine) => (
           <MedicineCard
             key={medicine.id}
             medicine={medicine}

@@ -10,9 +10,9 @@
 
 .card-img {
   border-radius: 3px;
-  object-fit: contain;
+  object-fit: cover;
   min-width: 100%;
-  height: 150px;
+  height: 200px;
 }
 
 .medicines-list_card-info {
@@ -21,4 +21,45 @@
   gap: 10px;
   padding: 10px;
   align-items: start;
+}
+
+.icon {
+  cursor: pointer;
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  height: 26px;
+}
+
+.card-info_bottom {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-info_button {
+  cursor: pointer;
+  border: none;
+  padding: 10px;
+  border-radius: 3px;
+  background-color: rgb(156, 156, 255);
+  color: black;
+}
+
+.card-info_button:hover {
+  background-color: rgb(115, 115, 201);
+}
+
+.card-info_name {
+  font-size: 19px;
+  font-weight: bold;
+}
+
+.card-info_price {
+  align-self: flex-start;
+}
+
+.card-info_price::after {
+  content: ' $';
 }

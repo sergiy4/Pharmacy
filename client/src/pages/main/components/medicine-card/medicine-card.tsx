@@ -8,6 +8,7 @@ import { type AsyncThunkAction } from '@reduxjs/toolkit';
 import { useCallback, useState } from 'react';
 import { useAppDispatch } from '../../../../libs/hooks/hooks';
 import { actions as appActionCreator } from '../../../../slices/app/app';
+import { actions as cartActionCreator } from '../../../../slices/cart/cart';
 import {
   NotificationMessage,
   NotificationType,
@@ -53,6 +54,11 @@ const MedicineCard = ({
       });
   }, [handleUpdateFavoriteMedicine, dispatch]);
 
+  const handleMedicineToCart = useCallback(
+    (id: number) => dispatch(cartActionCreator.addToCart(id)),
+    []
+  );
+
   return (
     <>
       <div className={styles['medicines-list_card']}>
@@ -61,12 +67,14 @@ const MedicineCard = ({
             icon={faStar}
             color='gold'
             onClick={handleUpdateMedicine}
+            className={styles['icon']}
           />
         ) : (
           <FontAwesomeIcon
             icon={faStartRegular}
             color='gold'
             onClick={handleUpdateMedicine}
+            className={styles['icon']}
           />
         )}
         <div className={styles['medicines-list_card-picture']}>
@@ -74,7 +82,15 @@ const MedicineCard = ({
         </div>
         <div className={styles['medicines-list_card-info']}>
           <p className={styles['card-info_name']}>{medicine.name}</p>
-          <p className={styles['card-info_price']}>{medicine.price}</p>
+          <div className={styles['card-info_bottom']}>
+            <p className={styles['card-info_price']}>{medicine.price}</p>
+            <button
+              className={styles['card-info_button']}
+              onClick={() => handleMedicineToCart(medicine.id)}
+            >
+              Add to cart
+            </button>
+          </div>
         </div>
       </div>
     </>
