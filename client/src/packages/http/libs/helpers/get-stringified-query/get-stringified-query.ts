@@ -2,11 +2,19 @@ type QueryType = {
   storeId?: number;
 };
 
-const getStringifiedQuery = (query: QueryType): string => {
+type QueryTypeCart = {
+  IDs?: number[];
+};
+
+const getStringifiedQuery = (query: QueryType | QueryTypeCart): string => {
   const searchParams = new URLSearchParams();
 
   if ('storeId' in query && !!query?.storeId) {
-    searchParams.append('query', query.storeId.toString());
+    searchParams.append('storeId', query.storeId.toString());
+  }
+
+  if ('IDs' in query && !!query?.IDs) {
+    searchParams.append('IDs', query.IDs.toString());
   }
 
   return searchParams.toString();
