@@ -10,15 +10,36 @@ const getCartItems = createAsyncThunk<
   Record<'medicines', CartItem[]>,
   GetCartItemsRequestDto,
   AsyncThunkConfig
->(ActionType.GET_CART_ITEMS, async (payload, { extra: { cartApi } }) => {
-  const loadMedicines = await cartApi.getCartItems(payload);
+>(
+  ActionType.GET_CART_ITEMS,
+  async (payload, { getState, extra: { cartApi } }) => {
+    const { cardItems } = await cartApi.getCartItems(payload);
 
-  const updatedMedicine = loadMedicines.medicines.map((item) => ({
-    ...item,
-    quantity: 1,
-  }));
+    const {
+      cart: { cart },
+    } = getState();
 
-  return { medicines: updatedMedicine };
-});
+    const updatedMedicine = cardItems.map((item) => {
+      const existingItemIndex = cart.findIndex(
+        (cartItem) => cartItem.id === item.id
+      );
+
+      if (existingItemIndex !== -1) {
+        const existingItem = cart[existingItemIndex];
+        return {
+          ...item,
+          quantity: existingItem.quantity,
+        };
+      }
+
+      return {
+        ...item,
+        quantity: 1,
+      };
+    });
+
+    return { medicines: updatedMedicine };
+  }
+);
 
 export { getCartItems };
