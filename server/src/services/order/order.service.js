@@ -1,18 +1,18 @@
-import { HttpCode, ErrorMessage } from '../../libs/enums/enums.js';
+import { HttpCode } from '../../libs/enums/enums.js';
 import { CustomError } from '../../libs/exception/custom-exception.js';
 
 class Order {
   #orderRepository;
   #orderItemRepository;
 
-  constructor({ orderRepository, orderItemRepository }) {
+  constructor({ orderRepository, orderItemRepository, medicineRepository }) {
     this.#orderRepository = orderRepository;
     this.#orderItemRepository = orderItemRepository;
   }
 
   async createOrder(orderData) {
     try {
-      const { user, orderItems } = orderData;
+      const { user, order_items: orderItems } = orderData;
 
       const createdOrderItem = await this.#orderItemRepository.create(user);
 
@@ -47,6 +47,7 @@ class Order {
       }
 
       const orders = await this.#orderRepository.findAll();
+
       return orders;
     } catch (err) {
       throw new CustomError({

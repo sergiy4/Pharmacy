@@ -2,7 +2,7 @@ const AppRoute = {
   MEDICINES: '/medicines',
   SHOPS: '/shops',
   ORDERS: '/orders',
-  CARD: '/card',
+  CART: '/cart',
 };
 
 export { AppRoute };

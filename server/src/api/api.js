@@ -2,7 +2,7 @@ import { AppRoute } from '../libs/enums/enums.js';
 import { initMedicine } from './medicines/medicines.api.js';
 import { initShop } from './shop/shop.api.js';
 import { initOrder } from './order/order.api.js';
-import { initCard } from './card/card-api.js';
+import { initCart } from './cart/cart-api.js';
 import {
   medicineService,
   shopService,
@@ -18,7 +18,7 @@ const initApi = (Router) => {
 
   apiRouter.use(AppRoute.ORDERS, initOrder(Router, { orderService }));
 
-  apiRouter.use(AppRoute.CARD, initCard(Router, { medicineService }));
+  apiRouter.use(AppRoute.CART, initCart(Router, { medicineService }));
 
   return apiRouter;
 };

@@ -21,7 +21,6 @@ const initOrder = (Router, services) => {
       try {
         const orders = await orderService.createOrder(req.body);
 
-        console.log(orders);
         return res.send({
           orders,
         });

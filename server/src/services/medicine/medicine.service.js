@@ -29,10 +29,10 @@ class Medicine {
     return medicines;
   }
 
-  async getCardItems(IDs) {
+  async getCartItems(IDs) {
     try {
-      const cardItems = await this.#medicineRepository.getByIds(IDs);
-      return cardItems.rows;
+      const cartItems = await this.#medicineRepository.getByIds(IDs);
+      return cartItems.rows;
     } catch (err) {
       throw new CustomError({
         message: err.detail,
