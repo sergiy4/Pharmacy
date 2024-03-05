@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit';
 
 import { type OrderItem } from '../../libs/types/types';
 import { createOrder } from './actions';
-import { RootState } from '../../libs/packages/store/store';
 
 type State = {
   orders: OrderItem[];
@@ -23,7 +22,5 @@ const { reducer, actions, name } = createSlice({
     });
   },
 });
-
-const getOrderIDsState = (state: RootState) => state.orders.orders;
 
 export { reducer, actions, name };

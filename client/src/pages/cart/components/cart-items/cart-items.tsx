@@ -32,7 +32,7 @@ const CartItems = () => {
 
   useEffect(() => {
     handleCartItemsLoad(cartState.IDs);
-  }, [handleCartItemsLoad]);
+  }, [handleCartItemsLoad, cartState.IDs]);
   return (
     <>
       <section className={styles['cart-section']}>

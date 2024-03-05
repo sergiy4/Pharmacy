@@ -1,7 +1,7 @@
 import styles from './styles.module.css';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../libs/hooks/hooks';
-import { Button, Input, Loader } from '../../../../libs/components/components';
+import { Input, Loader } from '../../../../libs/components/components';
 import { getCartsState } from '../../../../slices/cart/cart';
 import { actions as orderActionCreator } from '../../../../slices/order/order';
 import { actions as appActionCreator } from '../../../../slices/app/app';

@@ -2,7 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Layout, ErrorPage } from './libs/components/components';
 import { Main } from './pages/main/main';
 import { AppRoute } from './libs/enums/app/app-route.enum';
-import { Cart } from './pages/card/card';
+import { Cart } from './pages/cart/cart';
 
 const Router = () => {
   const router = createBrowserRouter([

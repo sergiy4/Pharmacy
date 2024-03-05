@@ -22,7 +22,7 @@ const CartItem = ({ orderItem }: Properties) => {
   );
 
   const handleChangeQuantity = useCallback(
-    (payload: { id: Number; quantity: number }): void => {
+    (payload: { id: number; quantity: number }): void => {
       if (payload.quantity < 50) {
         void dispatch(cartActionCreator.changeQuantity(payload));
       }
@@ -32,7 +32,7 @@ const CartItem = ({ orderItem }: Properties) => {
 
   useEffect(() => {
     handleChangeQuantity({ id: orderItem.id, quantity: Number(quantity) });
-  }, [handleChangeQuantity, quantity]);
+  }, [handleChangeQuantity, quantity, orderItem.id]);
 
   const handleQuantity = (event: ChangeEvent<HTMLInputElement>) => {
     setQuantity(event.target.value);

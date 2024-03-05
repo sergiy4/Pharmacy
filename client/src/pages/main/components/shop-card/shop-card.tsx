@@ -6,7 +6,7 @@ import {
   type Medicine,
   type Shop,
 } from '../../../../libs/types/types';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { actions as appActionCreator } from '../../../../slices/app/app';
 import {
   NotificationMessage,
@@ -30,11 +30,8 @@ type Properties = {
 const ShopCard = ({ shop, handleMedicineLoad }: Properties) => {
   const dispatch = useAppDispatch();
   const { id, name } = shop;
-  const [_isLoading, setIsLoading] = useState(false);
 
   const handleGetMedicines = useCallback(() => {
-    setIsLoading(true);
-
     handleMedicineLoad({ storeId: id })
       .unwrap()
       .catch(() => {
@@ -45,10 +42,8 @@ const ShopCard = ({ shop, handleMedicineLoad }: Properties) => {
           })
         );
       })
-      .finally(() => {
-        setIsLoading(false);
-      });
-  }, [handleMedicineLoad]);
+      .finally(() => {});
+  }, [handleMedicineLoad, dispatch, id]);
 
   return (
     <>

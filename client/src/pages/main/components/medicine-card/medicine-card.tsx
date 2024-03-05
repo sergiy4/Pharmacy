@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as faStartRegular } from '@fortawesome/free-regular-svg-icons';
 import { type AsyncThunkAction } from '@reduxjs/toolkit';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { useAppDispatch } from '../../../../libs/hooks/hooks';
 import { actions as appActionCreator } from '../../../../slices/app/app';
 import { actions as cartActionCreator } from '../../../../slices/cart/cart';
@@ -35,10 +35,8 @@ const MedicineCard = ({
   handleUpdateFavoriteMedicine,
 }: Properties) => {
   const dispatch = useAppDispatch();
-  const [isLoading, setIsLoading] = useState(false);
 
   const handleUpdateMedicine = useCallback(() => {
-    setIsLoading(true);
     handleUpdateFavoriteMedicine({ id: medicine.id })
       .unwrap()
       .catch(() => {
@@ -48,15 +46,12 @@ const MedicineCard = ({
             type: NotificationType.ERROR,
           })
         );
-      })
-      .finally(() => {
-        setIsLoading(false);
       });
-  }, [handleUpdateFavoriteMedicine, dispatch]);
+  }, [handleUpdateFavoriteMedicine, dispatch, medicine.id]);
 
   const handleMedicineToCart = useCallback(
     (id: number) => dispatch(cartActionCreator.addToCart(id)),
-    []
+    [dispatch]
   );
 
   return (
