@@ -1,7 +1,7 @@
 import { type Medicine } from './medicine.type';
 
 type GetMedicineDtoResponse = {
-  cardItems: Medicine[];
+  medicines: Medicine[];
 };
 
 export { type GetMedicineDtoResponse };
