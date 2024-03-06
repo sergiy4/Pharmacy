@@ -11,8 +11,10 @@ import {
 import { MedicineCard } from '../medicine-card/medicine-card';
 import { sortMedicinesByPriceAndFavorite } from './libs/helpers/helpers';
 import { FilterBar } from '../filterbar/filter-bar';
+import { Loader } from '../../../../libs/components/components';
 
 const MedicineList = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const medicines = useAppSelector((state) => getMedicinesState(state));
   const [ascending, setAscending] = useState(true);
@@ -24,6 +26,7 @@ const MedicineList = () => {
   };
 
   const handleMedicineLoad = useCallback((): void => {
+    setIsLoading(true);
     void dispatch(medicineActionCreator.getMedicines({ storeId: null }))
       .unwrap()
       .catch(() => {
@@ -33,6 +36,9 @@ const MedicineList = () => {
             type: NotificationType.ERROR,
           })
         );
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
   }, [dispatch]);
 
@@ -50,13 +56,17 @@ const MedicineList = () => {
     <>
       <section className={styles['medicines-list']}>
         <FilterBar handlePrice={handleDuration} />
-        {sortedMedicines.map((medicine) => (
-          <MedicineCard
-            key={medicine.id}
-            medicine={medicine}
-            handleUpdateFavoriteMedicine={handleUpdateFavoriteMedicine}
-          />
-        ))}
+        {isLoading ? (
+          <Loader />
+        ) : (
+          sortedMedicines.map((medicine) => (
+            <MedicineCard
+              key={medicine.id}
+              medicine={medicine}
+              handleUpdateFavoriteMedicine={handleUpdateFavoriteMedicine}
+            />
+          ))
+        )}
       </section>
     </>
   );

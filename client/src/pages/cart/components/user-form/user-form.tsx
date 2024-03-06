@@ -123,58 +123,52 @@ const UserForm = () => {
 
   return (
     <main className={styles['user-form-main']}>
-      {isLoading ? (
-        <Loader />
-      ) : (
-        <>
-          <form
-            className={styles['user-form']}
-            autoComplete='off'
-            onSubmit={onSubmit}
-          >
-            <Input
-              value={formData.username}
-              label='Full name'
-              name='full-name'
-              type='text'
-              onChange={handleUsername}
-            />
-            <Input
-              value={formData.email}
-              label='Email'
-              name='email'
-              type='email'
-              onChange={handleEmail}
-            />
-            <Input
-              value={formData.phone}
-              label='Phone'
-              name='phone'
-              type='text'
-              onChange={handlePhone}
-              attributes={{
-                minLength: '10',
-                maxLength: '10',
-              }}
-            />
-            <Input
-              value={formData.address}
-              label='Address'
-              name='address'
-              type='text'
-              onChange={handleAddress}
-              attributes={{
-                minLength: '3',
-                maxLength: '50',
-              }}
-            />
+      <form
+        className={styles['user-form']}
+        autoComplete='off'
+        onSubmit={onSubmit}
+      >
+        <Input
+          value={formData.username}
+          label='Full name'
+          name='full-name'
+          type='text'
+          onChange={handleUsername}
+        />
+        <Input
+          value={formData.email}
+          label='Email'
+          name='email'
+          type='email'
+          onChange={handleEmail}
+        />
+        <Input
+          value={formData.phone}
+          label='Phone'
+          name='phone'
+          type='text'
+          onChange={handlePhone}
+          attributes={{
+            minLength: '10',
+            maxLength: '10',
+          }}
+        />
+        <Input
+          value={formData.address}
+          label='Address'
+          name='address'
+          type='text'
+          onChange={handleAddress}
+          attributes={{
+            minLength: '3',
+            maxLength: '50',
+          }}
+        />
 
-            <button disabled={isLoading} type='submit'>
-              Submit
-            </button>
-          </form>
-        </>
-      )}
+        <button disabled={isLoading} type='submit'>
+          {isLoading ? <Loader /> : <>Submit</>}
+        </button>
+      </form>
     </main>
   );
 };

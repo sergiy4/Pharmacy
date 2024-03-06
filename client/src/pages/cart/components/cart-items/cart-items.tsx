@@ -1,17 +1,22 @@
 import styles from './styles.module.css';
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../../../libs/hooks/hooks';
 import { getAllCartState } from '../../../../slices/cart/cart';
 import { actions as cartActionCreator } from '../../../../slices/cart/cart';
 import { CartItem } from '../cart-item/cart-item';
+import { Loader } from '../../../../libs/components/components';
 
 const CartItems = () => {
+  const [isLoading, setIsLoading] = useState(false);
   const dispatch = useAppDispatch();
   const cartState = useAppSelector((state) => getAllCartState(state));
 
   const handleCartItemsLoad = useCallback(
     (IDs: number[]): void => {
-      void dispatch(cartActionCreator.getCartItems({ IDs }));
+      setIsLoading(true);
+      void dispatch(cartActionCreator.getCartItems({ IDs })).finally(() => {
+        setIsLoading(false);
+      });
     },
     [dispatch]
   );
@@ -22,7 +27,9 @@ const CartItems = () => {
   return (
     <>
       <section className={styles['cart-section']}>
-        {cartState.cart.length ? (
+        {isLoading ? (
+          <Loader />
+        ) : cartState.cart.length ? (
           cartState.cart.map((item) => (
             <CartItem orderItem={item} key={item.id} />
           ))
