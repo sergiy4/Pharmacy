@@ -20,7 +20,7 @@ class Order {
         orderItems.map((item) => {
           return this.#orderRepository.create({
             order_id: createdOrderItem.id,
-            medicine_id: item.medicineId,
+            medicine_id: item.medicine_Id,
             quantity: item.quantity,
           });
         })
